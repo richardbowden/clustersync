@@ -1,0 +1,12 @@
+---
+
+- hosts: all
+  become: true
+  vars_files:
+    - 'config.yml'
+    - 'private_config.yml'
+  roles:
+  - syncthing
+
+
+# - { role: debian_stock_config, when: ansible_os_family == 'Debian' }

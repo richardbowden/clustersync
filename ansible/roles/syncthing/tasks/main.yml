@@ -1,0 +1,23 @@
+---
+
+- name: ensure the user exists
+  user: name={{syncthing_user}} shell=/bin/bash
+
+- name: download syncthing client file with sha1 check
+  get_url: url={{syncthing_download_url}} dest=/tmp/{{syncthing_name}}.tar.gz checksum=sha1:{{syncthing_checksum}}
+
+- name: unarchive
+  unarchive:
+    src=/tmp/{{syncthing_name}}.tar.gz
+    dest=/tmp/
+    copy=no
+    creates=/tmp/{{syncthing_name}}
+
+- name: copy syncthing in to {{syncthing_user}} bin directory
+  copy:
+    src=/tmp/{{syncthing_name}}/{{syncthing_binary_name}}
+    dest=/usr/local/bin/{{syncthing_binary_name}}
+    remote_src=yes
+    owner={{syncthing_user}}
+    group={{syncthing_user}}
+    mode=0700
