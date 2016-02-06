@@ -2,8 +2,3 @@
 # user changeable
 syncthing_checksum: 'fbe2a9bb4de8801e85589ca39e5242f808482c02'
 syncthing_version: 'v0.12.17'
-
-# computed
-syncthing_name: 'syncthing-linux-amd64-{{syncthing_version}}'
-syncthing_binary_name: 'syncthing'
-syncthing_download_url: 'https://github.com/syncthing/syncthing/releases/download/{{syncthing_version}}/{{syncthing_name}}.tar.gz'

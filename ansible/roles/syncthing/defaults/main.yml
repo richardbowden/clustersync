@@ -1,0 +1,5 @@
+---
+# computed
+syncthing_name: 'syncthing-linux-amd64-{{syncthing_version}}'
+syncthing_binary_name: 'syncthing'
+syncthing_download_url: 'https://github.com/syncthing/syncthing/releases/download/{{syncthing_version}}/{{syncthing_name}}.tar.gz'
