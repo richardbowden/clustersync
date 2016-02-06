@@ -1,6 +1,6 @@
 ---
 
-- name: ensure the user exists
+- name: ensure {{syncthing_user}} user exists
   user: name={{syncthing_user}} shell=/bin/bash
 
 - name: download syncthing client file with sha1 check
