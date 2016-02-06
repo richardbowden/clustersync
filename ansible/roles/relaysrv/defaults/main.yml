@@ -1,0 +1,7 @@
+---
+relaysrv_name: 'relaysrv-linux-amd64'
+relaysrv_binary_name: 'relaysrv'
+relaysrv_version: 'v0.12.1'
+relaysrv_username: 'relaysrv'
+
+relaysrv_download_url: 'https://github.com/syncthing/relaysrv/releases/download/{{relaysrv_version}}/relaysrv-linux-amd64.tar.gz'
