@@ -1,6 +1,38 @@
 ---
 
-- hosts: all
+- hosts: localhost
+  connection: local
+  gather_facts: yes
+  vars_files:
+    - 'private_config.yml'
+
+  tasks:
+  - name: install dopy
+    pip: name=dopy state=present
+
+  - name: Provision a set of instances
+    digital_ocean:
+      state=present
+      command=droplet
+      name=sync01
+      unique_name=yes
+      ssh_key_ids=53463
+      api_token="{{digital_ocean_api_token}}"
+      size_id=512mb
+      region_id=lon1
+      image_id=ubuntu-14-04-x64
+      wait_timeout=500
+    register: my_droplet
+
+  - debug: msg="ID is {{ my_droplet.droplet.id }}"
+  - debug: msg="IP is {{ my_droplet.droplet.ip_address }}"
+
+  - name: Add all instance public IPs to host group
+    add_host: hostname={{ my_droplet.droplet.ip_address }} groups=sync
+    #  with_items: my_droplet.instances
+
+- hosts: sync
+  remote_user: root
   become: true
   vars_files:
     - 'config.yml'
