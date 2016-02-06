@@ -1,0 +1,24 @@
+---
+- name: 'ensure {{discosrv_username}} user exists'
+  user: name={{discosrv_username}} shell=/bin/bash
+
+- name: download discovery server
+  get_url: url={{discosrv_download_url}} dest=/tmp/{{discosrv_name}}.tar.gz
+
+- debug: msg="Check https://github.com/syncthing/discosrv/releases for new versions"
+
+- name: unarchive
+  unarchive:
+    src=/tmp/{{discosrv_name}}.tar.gz
+    dest=/tmp/
+    copy=no
+    creates=/tmp/{{discosrv_name}}
+
+- name: copy discosrv in to /usr/local/bin directory
+  copy:
+    src=/tmp/{{discosrv_name}}/{{discosrv_binary_name}}
+    dest=/usr/local/bin/{{discosrv_binary_name}}
+    remote_src=yes
+    owner={{discosrv_username}}
+    group={{discosrv_username}}
+    mode=0700

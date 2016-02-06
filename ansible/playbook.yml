@@ -7,6 +7,7 @@
     - 'private_config.yml'
   roles:
   - syncthing
+  - discosrv
 
 
 # - { role: debian_stock_config, when: ansible_os_family == 'Debian' }

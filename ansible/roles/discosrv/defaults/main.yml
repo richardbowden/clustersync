@@ -1,0 +1,7 @@
+---
+discosrv_name: 'discosrv-linux-amd64'
+discosrv_binary_name: 'discosrv'
+discosrv_version: 'v0.12.2'
+discosrv_username: 'discosrv'
+
+discosrv_download_url: 'https://github.com/syncthing/discosrv/releases/download/{{discosrv_version}}/{{discosrv_name}}.tar.gz'
